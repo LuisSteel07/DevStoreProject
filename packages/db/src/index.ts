@@ -8,4 +8,5 @@ const pool = new Pool({
   connectionString: process.env.LOCAL_DATABASE_URL,
 });
 
+export * as DrizzleORM from "drizzle-orm";
 export const db = drizzle(pool, { schema });
