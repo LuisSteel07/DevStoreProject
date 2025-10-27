@@ -1,0 +1,19 @@
+{
+  "name": "@repo/types",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "LuisSteel07",
+  "license": "ISC",
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "ts-node": "^10.9.2",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "zod": "^4.1.12"
+  }
+}

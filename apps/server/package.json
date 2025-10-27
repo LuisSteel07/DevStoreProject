@@ -16,7 +16,8 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "server": "link:",
-    "@repo/db": "workspace:*"
+    "@repo/db": "workspace:*",
+    "@repo/types": "workspace:*"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
