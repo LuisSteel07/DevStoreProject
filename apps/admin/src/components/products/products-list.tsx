@@ -1,18 +1,22 @@
 "use client";
-import { TProduct } from "@repo/types/dist/types/product";
 import { useEffect, useState } from "react";
 import ProductComponent from "./product";
 import { GetsProducts } from "@/src/lib/api/gets-products";
+import { TCompProduct } from "@/src/types/TCompProduct";
 
 export default function ProductList() {
-  const [products, setProducts] = useState<Array<TProduct>>();
+  const [products, setProducts] = useState<Array<TCompProduct>>();
 
   useEffect(() => {
     GetsProducts(setProducts);
   }, []);
 
   if (!products) {
-    return <h1 className="mt-16 font-bold text-2xl text-purple-700">Loading Products...</h1>;
+    return (
+      <h1 className="mt-16 font-bold text-2xl text-purple-700">
+        Loading Products...
+      </h1>
+    );
   }
 
   return (
