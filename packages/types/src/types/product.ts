@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const Product = z.object({
-  id: z.number().int(),
+  id: z.number().int().optional(),
   name: z.string().max(100),
   description: z.string().max(255),
   amount: z.number(),
