@@ -3,6 +3,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Product, TProduct } from "@repo/types/dist/types/product";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 export default function CreateProduct() {
   const {
@@ -12,7 +14,7 @@ export default function CreateProduct() {
   } = useForm<TProduct>({ resolver: zodResolver(Product) });
 
   const onSubmit = async (data: TProduct) => {
-    console.log("perro")
+    console.log("perro");
     try {
       const res = await fetch("http://localhost:3001/product/insert", {
         method: "POST",
@@ -24,6 +26,8 @@ export default function CreateProduct() {
       if (!res.ok) throw new Error(result.error);
 
       console.log("Producto creado:", result.product);
+
+      window.location.href = "/";
     } catch (err) {
       console.error("Error al crear producto:", err);
     }
@@ -35,19 +39,19 @@ export default function CreateProduct() {
       className="flex flex-col p-4 mt-8 w-[480px] bg-purple-200 rounded-2xl"
     >
       <label htmlFor="name">Name</label>
-      <input
+      <Input
         type="text"
         {...register("name", { required: true })}
-        className="bg-purple-400 p-2 rounded-2xl"
+        className="bg-purple-400 p-2 mb-2"
       />
       {errors.name && (
         <span className="text-red-500 text-base">{errors.name.message}</span>
       )}
       <label htmlFor="description">Description</label>
-      <input
+      <Input
         type="text"
         {...register("description", { required: true })}
-        className="bg-purple-400 p-2 rounded-2xl"
+        className="bg-purple-400 p-2 mb-2"
       />
       {errors.description && (
         <span className="text-red-500 text-base">
@@ -55,33 +59,33 @@ export default function CreateProduct() {
         </span>
       )}
       <label htmlFor="amount">Amount</label>
-      <input
+      <Input
         {...register("amount", { required: true, valueAsNumber: true })}
-        className="bg-purple-400 p-2 rounded-2xl"
+        className="bg-purple-400 p-2 mb-2"
       />
       {errors.amount && (
         <span className="text-red-500 text-base">{errors.amount.message}</span>
       )}
       <label htmlFor="price">Price</label>
-      <input
+      <Input
         {...register("price", { required: true, valueAsNumber: true })}
-        className="bg-purple-400 p-2 rounded-2xl"
+        className="bg-purple-400 p-2 mb-2"
       />
       {errors.price && (
         <span className="text-red-500 text-base">{errors.price.message}</span>
       )}
       <label htmlFor="photo">Photo</label>
-      <input
+      <Input
         type="text"
         {...register("photo", { required: true })}
-        className="bg-purple-400 p-2 rounded-2xl"
+        className="bg-purple-400 p-2 mb-2"
       />
       {errors.photo && (
         <span className="text-red-500 text-base">{errors.photo.message}</span>
       )}
-      <button type="submit" className="bg-purple-400 mt-4 ">
+      <Button type="submit" className="bg-purple-400 mt-4 ">
         Crear
-      </button>
+      </Button>
     </form>
   );
 }

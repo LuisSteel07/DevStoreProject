@@ -11,6 +11,7 @@ import { DeleteIcon, PencilIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { DeleteProduct } from "@/src/lib/api/delete-product";
 import { TCompProduct } from "@/src/types/TCompProduct";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export default function ProductComponent({
   product,
@@ -18,8 +19,8 @@ export default function ProductComponent({
   product: TCompProduct;
 }) {
   return (
-    <Card className="w-60 h-60 bg-purple-100">
-      <CardHeader className="h-10">
+    <Card className="w-60 h-60 bg-purple-100 p-4">
+      <CardHeader className="">
         <CardTitle>{product.name}</CardTitle>
         <CardDescription>{product.description.slice(0, 40)}</CardDescription>
       </CardHeader>
@@ -29,16 +30,29 @@ export default function ProductComponent({
           <p>${product.amount}</p>
         </div>
       </CardContent>
-      <CardAction className="p-4 flex flex-row gap-8">
-        <Link
-          href={`/product/update/${product.id}`}
-          className="p-1 hover:bg-purple-300 hover:transition-all hover:duration-100 hover:scale-110 hover:shadow-inner rounded-md "
-        >
-          <PencilIcon />
-        </Link>
-        <Button onClick={async () => await DeleteProduct(product.id)}>
-          <DeleteIcon />
-        </Button>
+      <CardAction className="ml-4 flex flex-row gap-8">
+        <Tooltip>
+          <TooltipTrigger>
+            <Link href={`/product/update/${product.id}`}>
+              <Button>
+                <PencilIcon />
+              </Button>
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Edit the product</p>
+          </TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger>
+            <Button onClick={async () => await DeleteProduct(product.id)}>
+              <DeleteIcon />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Delete the product</p>
+          </TooltipContent>
+        </Tooltip>
       </CardAction>
     </Card>
   );
