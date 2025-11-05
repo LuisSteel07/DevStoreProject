@@ -1,12 +1,10 @@
-"use client";
-
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Product, TProduct } from "@repo/types/dist/types/product";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
-export default function CreateProduct() {
+export default function UpdateProduct({ product }: { product: TProduct }) {
   const {
     register,
     formState: { errors },
@@ -15,20 +13,19 @@ export default function CreateProduct() {
 
   const onSubmit = async (data: TProduct) => {
     try {
-      const res = await fetch("http://localhost:3001/product/insert", {
+      const res = await fetch("http://localhost:3001/product/update", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ id: product.id, ...data }),
       });
 
       const result = await res.json();
       if (!res.ok) throw new Error(result.error);
 
-      console.log("Producto creado:", result.product);
-
+      console.log("Producto actualizado:", result.product);
       window.location.href = "/";
     } catch (err) {
-      console.error("Error al crear producto:", err);
+      console.error("Error al actualizar producto:", err);
     }
   };
 
@@ -42,6 +39,7 @@ export default function CreateProduct() {
         type="text"
         {...register("name", { required: true })}
         className="bg-purple-400 p-2 mb-2"
+        defaultValue={product.name}
       />
       {errors.name && (
         <span className="text-red-500 text-base">{errors.name.message}</span>
@@ -51,6 +49,7 @@ export default function CreateProduct() {
         type="text"
         {...register("description", { required: true })}
         className="bg-purple-400 p-2 mb-2"
+        defaultValue={product.description}
       />
       {errors.description && (
         <span className="text-red-500 text-base">
@@ -61,6 +60,7 @@ export default function CreateProduct() {
       <Input
         {...register("amount", { required: true, valueAsNumber: true })}
         className="bg-purple-400 p-2 mb-2"
+        defaultValue={product.amount}
       />
       {errors.amount && (
         <span className="text-red-500 text-base">{errors.amount.message}</span>
@@ -69,6 +69,7 @@ export default function CreateProduct() {
       <Input
         {...register("price", { required: true, valueAsNumber: true })}
         className="bg-purple-400 p-2 mb-2"
+        defaultValue={product.price}
       />
       {errors.price && (
         <span className="text-red-500 text-base">{errors.price.message}</span>
@@ -78,6 +79,7 @@ export default function CreateProduct() {
         type="text"
         {...register("photo", { required: true })}
         className="bg-purple-400 p-2 mb-2"
+        defaultValue={product.photo}
       />
       {errors.photo && (
         <span className="text-red-500 text-base">{errors.photo.message}</span>

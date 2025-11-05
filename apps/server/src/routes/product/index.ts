@@ -4,6 +4,7 @@ import filterProduct from "./filter-proucts";
 import getProduct from "./get-products";
 import insertProduct from "./insert-product";
 import updateProduct from "./update-product";
+import getSpecificProduct from "./get-specific-product";
 
 const productRoute = Router();
 
@@ -12,5 +13,6 @@ productRoute.use("/product", filterProduct);
 productRoute.use("/product", getProduct);
 productRoute.use("/product", insertProduct);
 productRoute.use("/product", updateProduct);
+productRoute.use("/product", getSpecificProduct);
 
 export default productRoute;

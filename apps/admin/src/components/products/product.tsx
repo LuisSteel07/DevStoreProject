@@ -33,7 +33,7 @@ export default function ProductComponent({
       <CardAction className="ml-4 flex flex-row gap-8">
         <Tooltip>
           <TooltipTrigger>
-            <Link href={`/product/update/${product.id}`}>
+            <Link href={`/product/update?id=${product.id}`}>
               <Button>
                 <PencilIcon />
               </Button>
