@@ -4,4 +4,5 @@ export const UserSchema = pgTable("Users", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: text().notNull(),
   email: text().notNull().unique(),
+  password: text().notNull(),
 });

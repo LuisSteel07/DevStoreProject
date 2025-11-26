@@ -27,7 +27,7 @@ insertProduct.post("/insert", async (req: Request, res: Response) => {
       .json({ message: "Producto creado", product: returning_product[0] });
   } catch (err) {
     console.log(err);
-    return res.json({ error: err }).status(500);
+    return res.status(500).json({ error: err });
   }
 });
 

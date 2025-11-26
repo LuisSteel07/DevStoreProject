@@ -6,13 +6,13 @@ import insertProduct from "./insert-product";
 import updateProduct from "./update-product";
 import getSpecificProduct from "./get-specific-product";
 
-const productRoute = Router();
+const ProductRoute = Router();
 
-productRoute.use("/product", deleteProduct);
-productRoute.use("/product", filterProduct);
-productRoute.use("/product", getProduct);
-productRoute.use("/product", insertProduct);
-productRoute.use("/product", updateProduct);
-productRoute.use("/product", getSpecificProduct);
+ProductRoute.use("/product", deleteProduct);
+ProductRoute.use("/product", filterProduct);
+ProductRoute.use("/product", getProduct);
+ProductRoute.use("/product", insertProduct);
+ProductRoute.use("/product", updateProduct);
+ProductRoute.use("/product", getSpecificProduct);
 
-export default productRoute;
+export default ProductRoute;
