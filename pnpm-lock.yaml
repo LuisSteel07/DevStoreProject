@@ -32,12 +32,18 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.2.8
         version: 1.2.8(@types/react-dom@19.1.1(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@repo/api':
+        specifier: workspace:*
+        version: link:../../packages/api
       '@repo/types':
         specifier: workspace:*
         version: link:../../packages/types
       '@tabler/icons-react':
         specifier: ^3.35.0
         version: 3.35.0(react@19.1.0)
+      admin:
+        specifier: 'link:'
+        version: 'link:'
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -215,6 +221,25 @@ importers:
       typescript:
         specifier: 5.9.2
         version: 5.9.2
+
+  packages/api:
+    dependencies:
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/node':
+        specifier: ^24.10.0
+        version: 24.10.0
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@24.10.0)(typescript@5.9.3)
+      typescript:
+        specifier: latest
+        version: 5.9.3
 
   packages/db:
     dependencies:

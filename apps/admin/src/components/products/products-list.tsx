@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import ProductComponent from "./product";
-import { GetsProducts } from "@/src/lib/api/gets-products";
-import { TCompProduct } from "@/src/types/TCompProduct";
+import { TProduct } from "@repo/types/dist/types/product";
+import { GetsProducts } from "@repo/api/dist/products";
 
 export default function ProductList() {
-  const [products, setProducts] = useState<Array<TCompProduct>>();
+  const [products, setProducts] = useState<Array<TProduct>>();
 
   useEffect(() => {
     GetsProducts(setProducts);

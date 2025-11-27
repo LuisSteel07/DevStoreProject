@@ -9,15 +9,11 @@ import {
 import Link from "next/link";
 import { DeleteIcon, PencilIcon } from "lucide-react";
 import { Button } from "../ui/button";
-import { DeleteProduct } from "@/src/lib/api/delete-product";
-import { TCompProduct } from "@/src/types/TCompProduct";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { TProduct } from "@repo/types/dist/types/product";
+import { DeleteProduct } from "@repo/api/dist/products";
 
-export default function ProductComponent({
-  product,
-}: {
-  product: TCompProduct;
-}) {
+export default function ProductComponent({ product }: { product: TProduct }) {
   return (
     <Card className="w-60 h-60 bg-purple-100 p-4">
       <CardHeader className="">
@@ -45,7 +41,7 @@ export default function ProductComponent({
         </Tooltip>
         <Tooltip>
           <TooltipTrigger>
-            <Button onClick={async () => await DeleteProduct(product.id)}>
+            <Button onClick={async () => await DeleteProduct(product.id!)}>
               <DeleteIcon />
             </Button>
           </TooltipTrigger>

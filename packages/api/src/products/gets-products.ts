@@ -1,7 +1,7 @@
-import { TCompProduct } from "@/src/types/TCompProduct";
+import { TProduct } from "@repo/types/dist/types/product";
 
 export const GetsProducts = async (
-  setProducts: (result: Array<TCompProduct>) => void
+  setProducts: (result: Array<TProduct>) => void
 ) => {
   try {
     const res = await fetch("http://localhost:3001/product/get");

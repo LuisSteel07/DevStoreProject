@@ -3,10 +3,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Product, TProduct } from "@repo/types/dist/types/product";
+import {  CreateProduct } from "@repo/api/dist/products";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
-export default function CreateProduct() {
+export default function CreateProductForm() {
   const {
     register,
     formState: { errors },
@@ -14,22 +15,7 @@ export default function CreateProduct() {
   } = useForm<TProduct>({ resolver: zodResolver(Product) });
 
   const onSubmit = async (data: TProduct) => {
-    try {
-      const res = await fetch("http://localhost:3001/product/insert", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      const result = await res.json();
-      if (!res.ok) throw new Error(result.error);
-
-      console.log("Producto creado:", result.product);
-
-      window.location.href = "/";
-    } catch (err) {
-      console.error("Error al crear producto:", err);
-    }
+    CreateProduct(data);
   };
 
   return (

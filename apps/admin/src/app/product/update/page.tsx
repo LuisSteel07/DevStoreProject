@@ -1,6 +1,6 @@
 "use client";
-import UpdateProduct from "@/src/components/forms/update-product";
-import { GetSpecificProduct } from "@/src/lib/api/get-specific-product";
+import UpdateProductForm from "@/src/components/forms/update-product";
+import { GetSpecificProduct } from "@repo/api/dist/products";
 import { TProduct } from "@repo/types/dist/types/product";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div className="flex flex-col justify-center items-center mt-8">
       <h1 className="text-2xl font-bold ">Create Product</h1>
-      <UpdateProduct product={product} />
+      <UpdateProductForm product={product} />
     </div>
   );
 }

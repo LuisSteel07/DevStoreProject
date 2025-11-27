@@ -3,8 +3,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Product, TProduct } from "@repo/types/dist/types/product";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { UpdateProduct } from "@repo/api/dist/products";
 
-export default function UpdateProduct({ product }: { product: TProduct }) {
+export default function UpdateProductForm({ product }: { product: TProduct }) {
   const {
     register,
     formState: { errors },
@@ -12,21 +13,7 @@ export default function UpdateProduct({ product }: { product: TProduct }) {
   } = useForm<TProduct>({ resolver: zodResolver(Product) });
 
   const onSubmit = async (data: TProduct) => {
-    try {
-      const res = await fetch("http://localhost:3001/product/update", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: product.id, ...data }),
-      });
-
-      const result = await res.json();
-      if (!res.ok) throw new Error(result.error);
-
-      console.log("Producto actualizado:", result.product);
-      window.location.href = "/";
-    } catch (err) {
-      console.error("Error al actualizar producto:", err);
-    }
+    UpdateProduct(data);
   };
 
   return (
