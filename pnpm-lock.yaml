@@ -163,6 +163,12 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.2.3
         version: 1.2.3(@types/react@19.1.0)(react@19.1.0)
+      '@repo/api':
+        specifier: workspace:*
+        version: link:../../packages/api
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@tabler/icons-react':
         specifier: ^3.35.0
         version: 3.35.0(react@19.1.0)
@@ -187,6 +193,9 @@ importers:
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1
+      web:
+        specifier: 'link:'
+        version: 'link:'
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*

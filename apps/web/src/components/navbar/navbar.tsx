@@ -16,9 +16,6 @@ export const NavBar = () => {
     <nav className="flex flex-row justify-between items-center p-4 bg-indigo-800">
       <h1 className="text-2xl text-white font-bold">DevStore</h1>
       <div className="flex justify-evenly items-center gap-8 ">
-        <Link href={"/products"}>
-          <Button>Products</Button>
-        </Link>
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Button>Account</Button>
@@ -27,16 +24,16 @@ export const NavBar = () => {
             <DropdownMenuLabel>Account Methods</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem className="flex flex-col gap-2 justify-start">
+              <DropdownMenuItem>
                 <Link href={"/"} className="flex flex-row gap-2 items-center">
                   <IconNewSection />
-                  <p>Update Data</p>
+                  <p>Sign in</p>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Link href={"/"} className="flex flex-row gap-2 items-center">
                   <IconViewfinder />
-                  <p>View Account Details</p>
+                  <p>Sign up</p>
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
